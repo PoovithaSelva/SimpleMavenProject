@@ -60,7 +60,7 @@ script{
 switch(env.BRANCH_NAME)
 {
    case['master']:
-     echo " success $JOB_NAME ,env.BARNCH_NAME"
+     echo " success $JOB_NAME ,env.BRANCH_NAME"
      break
 }
 }}}
