@@ -57,10 +57,10 @@ post
 {
 success{
 script{
-switch($BRANCH_NAME)
+switch(env.BRANCH_NAME)
 {
    case['master']:
-     echo " success $JOB_NAME ,$BARNCH_NAME"
+     echo " success $JOB_NAME ,env.BARNCH_NAME"
      break
 }
 }}}
