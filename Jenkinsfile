@@ -63,6 +63,9 @@ switch(env.BRANCH_NAME)
      echo " success $JOB_NAME ,env.BRANCH_NAME"
      break
 }
+build job : JOB_NAME.replace('/master/' , '/main/')
+echo " triggered main"
+
 }
 script{
 echo "final step"}}
