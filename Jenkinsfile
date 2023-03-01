@@ -56,6 +56,14 @@ pipeline {
 post
 {
 success{
-echo " success $JOB_NAME "
+script{
+switch(env.BRANCH_NAME)
+{
+   case['master']:
+     echo " success $JOB_NAME ,env.BRANCH_NAME"
+     break
 }
+}
+script{
+echo "final step"}}
 }}
