@@ -63,5 +63,7 @@ switch(env.BRANCH_NAME)
      echo " success $JOB_NAME ,env.BRANCH_NAME"
      break
 }
-}}}
 }
+script{
+echo "final step"}}
+}}
