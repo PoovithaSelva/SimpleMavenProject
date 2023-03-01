@@ -56,6 +56,12 @@ pipeline {
 post
 {
 success{
-echo " success $JOB_NAME "
+script{
+switch($BRANCH_NAME)
+{
+   case['master']:
+     echo " success $JOB_NAME ,$BARNCH_NAME"
+     break
 }
-}}
+}}}
+}
