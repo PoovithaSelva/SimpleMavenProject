@@ -7,6 +7,6 @@ RUN mvn -f pom.xml clean package
 
 FROM openjdk:17
 WORKDIR /temp
-COPY --from = build /usr/src/SimpleMavenProject-1.0-SNAPSHOT.jar /temp/SimpleMavenProject-1.0-SNAPSHOT.jar
+COPY --from=build /usr/src/*.jar /temp/SimpleMavenProject-1.0-SNAPSHOT.jar
 EXPOSE 8080
 CMD ["java","-jar","/temp/SimpleMavenProject-1.0-SNAPSHOT.jar"]
