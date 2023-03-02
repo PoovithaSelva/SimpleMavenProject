@@ -1,0 +1,46 @@
+pipeline {
+    agent any
+    environment{
+        
+        registry = "poovithaselvaraj/docker-images98"
+        registryCredential = 'd3be8a3e-9e76-4819-9daf-f921e147c318'        
+    }
+
+    stages {
+ 
+         stage('Building image') {
+      steps{
+        script {
+          dockerImage = docker.build registry + ":$BUILD_NUMBER"
+        }
+      }
+    }
+       stage('Deploy Image') {
+      steps{
+         script {
+            withDockerRegistry([ credentialsId: "dockerhub", url: "" ])  {
+            dockerImage.push()
+          }
+        }
+      }
+           
+       }
+    }
+post
+{
+success{
+script{
+switch(env.BRANCH_NAME)
+{
+   case['master']:
+     echo " success $JOB_NAME ,env.BRANCH_NAME"
+     break
+}
+build job : JOB_NAME.replace('/master','/main') ,
+wait : false
+echo " triggered main"
+
+}
+script{
+echo "final step"}}
+}}
